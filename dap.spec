@@ -1,6 +1,6 @@
 %define name	dap
 %define version	2.1.5
-%define release %mkrel 5
+%define release %mkrel 6
 
 Summary:	Audio sample editing and processing suite
 Name:		%{name}
@@ -10,7 +10,8 @@ License: 	GPL
 Group: 		Sound
 URL: 		http://www.cee.hw.ac.uk/~richardk/
 Source: 	%{name}-%{version}.tar.bz2
-Patch:		%{name}-2.1.5.patch.bz2
+Patch0:		%{name}-2.1.5.patch
+Patch1:		dap-2.1.5-x11-path.patch
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	libforms-devel
 
@@ -24,15 +25,11 @@ a reasonably complete DSP processing suite.
 
 %prep
 %setup -q
-cd tooltips
-%patch
+%patch1 -p1
 
 %build
-perl -p -i -e 's/XFORMS\)\/FORMS/XFORMS\)/g' `find -name Makefile.linux`
-perl -p -i -e 's/X11DIR\)\/lib/X11DIR\)\/%_lib/' main/Makefile.linux
-mv Makefile.linux Makefile
-export XFORMS=/usr/X11R6/include/X11
-%make OPTIM="$RPM_OPT_FLAGS"
+export XFORMS=/usr/include/X11
+%make OPTIM="$RPM_OPT_FLAGS" -f Makefile.linux
 
 %install
 rm -rf %buildroot/
@@ -40,31 +37,20 @@ rm -rf %buildroot/
 mkdir -p $RPM_BUILD_ROOT/%_bindir
 cp main/DAP $RPM_BUILD_ROOT/%_bindir/dap
 
-# Menu
-mkdir -p %buildroot/%{_menudir}
-cat > %buildroot/%{_menudir}/%{name} <<EOF
-?package(%{name}): command="%{_bindir}/%{name}" needs="X11" \
-icon="sound_section.png" section="Multimedia/Sound" \
-title="DAP" longtitle="Digital audio processing suite" \
-xdg="true"
-EOF
-
 mkdir -p %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=%{name}
-Comment=%{Summary}
+Comment=Audio sample editing and processing suite
 Exec=%{name} -c
 Icon=%{name}
 Terminal=false
 Type=Application
-Categories="X-MandrivaLinux-Multimedia-Sound;AudioVideo;Audio / Midi / Mixer / Sequencer / Tuner / Audio;AudioVideoEditing / Audio;Player / Audio;Recorder;"
+Categories=AudioVideo;Audio;Midi;Mixer;Sequencer;Tuner;AudioVideoEditing;Player;Recorder;
 EOF
 
-
-
 %clean
-rm -rf %buildroot/
+rm -rf %buildroot
 
 %post
 %{update_menus}
@@ -76,5 +62,4 @@ rm -rf %buildroot/
 %defattr(-,root,root)
 %doc CHANGES COPYING FEATURES README THANKS TODO
 %{_bindir}/%name
-%{_menudir}/%{name}
 %{_datadir}/applications/*
