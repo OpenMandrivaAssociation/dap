@@ -1,6 +1,6 @@
 %define name	dap
 %define version	2.1.5
-%define release %mkrel 6
+%define release %mkrel 8
 
 Summary:	Audio sample editing and processing suite
 Name:		%{name}
