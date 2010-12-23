@@ -1,6 +1,6 @@
 %define name	dap
 %define version	2.1.5
-%define release %mkrel 10
+%define release %mkrel 11
 
 Summary:	Audio sample editing and processing suite
 Name:		%{name}
@@ -13,6 +13,7 @@ Source: 	%{name}-%{version}.tar.bz2
 Patch1:		dap-2.1.5-x11-path.patch
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	libforms-devel
+Buildrequires:	libx11-devel
 
 %description
 DAP is a comprehensive audio sample editing and processing suite.
@@ -28,7 +29,7 @@ a reasonably complete DSP processing suite.
 
 %build
 export XFORMS=/usr/include/X11
-%make OPTIM="$RPM_OPT_FLAGS" -f Makefile.linux
+make CXX="g++ %ldflags" OPTIM="$RPM_OPT_FLAGS" -f Makefile.linux
 
 %install
 rm -rf %buildroot/
