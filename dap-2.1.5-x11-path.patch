@@ -1,0 +1,66 @@
+diff -u -r --exclude='*~' dap-2.1.5.orig/main/Makefile.linux dap-2.1.5/main/Makefile.linux
+--- dap-2.1.5.orig/main/Makefile.linux	2007-09-06 21:40:12.000000000 +0800
++++ dap-2.1.5/main/Makefile.linux	2007-09-06 21:41:56.000000000 +0800
+@@ -7,7 +7,7 @@
+ AUDIOF  = ../libaudiofile
+ BACKDIR = ../bak/main
+ HOMEDIR = $(HOME)
+-X11DIR  = /usr/X11R6
++X11DIR  = /usr
+ INCDIR  = -I. -I.. -I$(SOUND) -I$(SPKIT) -I$(TOOLTIP) -I$(X11DIR)/include -I$(X11DIR)/include/X11
+ LIBDIR  = -L$(SPKIT)/spkit -L$(AUDIO) -L$(AUDIOF) -L$(TOOLTIP) -L$(X11DIR)/lib
+ CCFLAGS = $(INCDIR) $(DEBUG) $(OPTIM) -DLINUX -DBIGENDIAN -DUSINGGCC -Wall -Wno-unused
+diff -u -r --exclude='*~' dap-2.1.5.orig/spkit/spkit/Makefile.linux dap-2.1.5/spkit/spkit/Makefile.linux
+--- dap-2.1.5.orig/spkit/spkit/Makefile.linux	2007-09-06 21:40:12.000000000 +0800
++++ dap-2.1.5/spkit/spkit/Makefile.linux	2007-09-06 21:48:04.000000000 +0800
+@@ -5,7 +5,7 @@
+ BACKDIR = ../../bak/spkit/spkit
+ MAINDIR = ../../main
+ HOMEDIR = $(HOME)
+-X11DIR  = /usr/X11R6
++X11DIR  = /usr
+ INCDIR  = -I. -I.. -I../.. -I$(SOUND) -I$(MAINDIR) -I$(TOOLTIP) -I$(X11DIR)/include -I$(X11DIR)/include/X11 -I$(OTHER_INCLUDE_DIR)
+ CCFLAGS = $(INCDIR) $(DEBUG) $(OPTIM) -DLINUX -DBIGENDIAN -DUSINGGCC -Wall -Wno-unused
+ DEBUG   = -g3
+diff -u -r --exclude='*~' dap-2.1.5.orig/tooltips/examples/menu/Makefile dap-2.1.5/tooltips/examples/menu/Makefile
+--- dap-2.1.5.orig/tooltips/examples/menu/Makefile	2007-09-06 21:40:12.000000000 +0800
++++ dap-2.1.5/tooltips/examples/menu/Makefile	2007-09-06 21:48:45.000000000 +0800
+@@ -26,7 +26,7 @@
+ TOOLTIPS_INCLUDE_DIR = ../..
+ 
+ # Define other include directories for files.
+-X_INCLUDE_DIR = /usr/X11R6/include
++X_INCLUDE_DIR = /usr/include
+ 
+ # Define where the X11 include files are for Sun systems
+ SUN_INCLUDE_DIR = /usr/openwin/include
+@@ -35,7 +35,7 @@
+ TOOLTIPS_LIBRARY_DIR = ../..
+ 
+ # Define where the X11 library files are.
+-X_LIBRARY_DIR = /usr/X11R6/lib
++X_LIBRARY_DIR = /usr/lib
+ 
+ # Comment out this line if you do not want debug information included.
+ DEBUG = -g -Wall -ansi -pedantic
+diff -u -r --exclude='*~' dap-2.1.5.orig/tooltips/Makefile.linux dap-2.1.5/tooltips/Makefile.linux
+--- dap-2.1.5.orig/tooltips/Makefile.linux	2007-09-06 21:40:12.000000000 +0800
++++ dap-2.1.5/tooltips/Makefile.linux	2007-09-06 21:50:41.000000000 +0800
+@@ -26,7 +26,7 @@
+ VERSION = 0.02g
+ 
+ # Define where the X11 include files are.
+-X11_INCLUDE_DIR = /usr/X11R6/include
++X11_INCLUDE_DIR = /usr/include/X11
+ 
+ # Uncomment out this line if you do not want debug information included.
+ # DEBUG = -g -Wall -ansi -pedantic
+@@ -37,7 +37,7 @@
+ 
+ # Define the utilities to use for compilation.
+ CC         = gcc
+-CCOPTS     = $(DEBUG) $(OPTIM) -I$(X11_INCLUDE_DIR) -I$(X11_INCLUDE_DIR)/X11 -I$(OTHER_INCLUDE_DIR)
++CCOPTS     = $(DEBUG) $(OPTIM) -I$(X11_INCLUDE_DIR) -I$(X11_INCLUDE_DIR)/X11 -I$(OTHER_INCLUDE_DIR) -lforms
+ AR         = ar
+ AROPTS     = ruv
+ SED        = sed
