@@ -67,3 +67,60 @@ rm -rf %buildroot
 %doc CHANGES COPYING FEATURES README THANKS TODO
 %{_bindir}/%name
 %{_datadir}/applications/*
+
+
+%changelog
+* Thu Dec 23 2010 Funda Wang <fwang@mandriva.org> 2.1.5-11mdv2011.0
++ Revision: 623979
+- rebuild for new xform
+
+* Thu Dec 09 2010 Oden Eriksson <oeriksson@mandriva.com> 2.1.5-10mdv2011.0
++ Revision: 617517
+- the mass rebuild of 2010.0 packages
+
+* Thu Sep 03 2009 Thierry Vignaud <tv@mandriva.org> 2.1.5-9mdv2010.0
++ Revision: 427209
+- rebuild
+
+* Wed Jul 23 2008 Thierry Vignaud <tv@mandriva.org> 2.1.5-8mdv2009.0
++ Revision: 243960
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 2.1.5-6mdv2008.1
++ Revision: 136360
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Funda Wang <fwang@mandriva.org>
+    - old patch not needed
+
+* Thu Sep 06 2007 Funda Wang <fwang@mandriva.org> 2.1.5-6mdv2008.0
++ Revision: 80961
+- Rebuild for new x11 library
+- Import dap
+
+
+
+* Fri Aug 04 2006 Lenny Cartier <lenny@mandriva.com> 2.1.5-5mdv2007.0
+- xdg
+
+* Fri Jun 23 2006 Pascal Terjan <pterjan@mandriva.org> 2.1.5-4mdv2007.0
+- fix lib64
+
+* Thu Jan 06 2006 Lenny Cartier <lenny@mandriva.com> 2.1.5-3mdk
+- rebuild
+
+* Wed Jun 16 2004 Lenny Cartier <lenny@mandrakesoft.com> 2.1.5-2mdk
+- rebuild
+
+* Mon Feb 16 2004 Austin Acton <austin@mandrake.org> 2.1.5-1mdk
+- 2.1.5
+
+* Tue Jan 07 2003 Lenny Cartier <lenny@mandrakesoft.com> 2.1.4-1mdk
+- from Austin Acton <aacton@yorku.ca> :
+	- initial package
