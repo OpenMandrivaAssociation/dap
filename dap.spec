@@ -13,7 +13,7 @@ Source: 	%{name}-%{version}.tar.bz2
 Patch1:		dap-2.1.5-x11-path.patch
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	libforms-devel
-Buildrequires:	libx11-devel
+Buildrequires:	pkgconfig(x11)
 
 %description
 DAP is a comprehensive audio sample editing and processing suite.
