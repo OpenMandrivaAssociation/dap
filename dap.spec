@@ -1,6 +1,6 @@
 %define name	dap
 %define version	2.1.5
-%define release %mkrel 11
+%define release  12
 
 Summary:	Audio sample editing and processing suite
 Name:		%{name}
@@ -11,7 +11,6 @@ Group: 		Sound
 URL: 		http://www.cee.hw.ac.uk/~richardk/
 Source: 	%{name}-%{version}.tar.bz2
 Patch1:		dap-2.1.5-x11-path.patch
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	libforms-devel
 Buildrequires:	pkgconfig(x11)
 
