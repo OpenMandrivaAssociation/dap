@@ -1,6 +1,6 @@
 %define name	dap
 %define version	2.1.5
-%define release  12
+%define release  13
 
 Summary:	Audio sample editing and processing suite
 Name:		%{name}
