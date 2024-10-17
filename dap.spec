@@ -8,7 +8,7 @@ Version: 	%{version}
 Release: 	%{release}
 License: 	GPL
 Group: 		Sound
-URL: 		http://www.cee.hw.ac.uk/~richardk/
+URL: 		https://www.cee.hw.ac.uk/~richardk/
 Source: 	%{name}-%{version}.tar.bz2
 Patch1:		dap-2.1.5-x11-path.patch
 BuildRequires:	libforms-devel
