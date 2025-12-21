@@ -11,6 +11,7 @@ Group: 		Sound
 URL: 		https://www.cee.hw.ac.uk/~richardk/
 Source: 	%{name}-%{version}.tar.bz2
 Patch1:		dap-2.1.5-x11-path.patch
+BuildRequires:	make
 BuildRequires:	libforms-devel
 Buildrequires:	pkgconfig(x11)
 
